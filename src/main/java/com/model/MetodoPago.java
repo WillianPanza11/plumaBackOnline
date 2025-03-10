@@ -21,8 +21,55 @@ public class MetodoPago {
     @Column(nullable = false, unique = true, length = 100)
     private String nombre;
 
+    @Column(length = 10)
+    private String activo;
+
     @OneToMany(mappedBy = "metodoPago")
     private List<Pedido> pedidos;
+
+    public MetodoPago() {
+    }
+
+    public MetodoPago(Long idMetodoPago, String nombre, String activo, List<Pedido> pedidos) {
+        this.idMetodoPago = idMetodoPago;
+        this.nombre = nombre;
+        this.activo = activo;
+        this.pedidos = pedidos;
+    }
+
+    public Long getIdMetodoPago() {
+        return idMetodoPago;
+    }
+
+    public void setIdMetodoPago(Long idMetodoPago) {
+        this.idMetodoPago = idMetodoPago;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getActivo() {
+        return activo;
+    }
+
+    public void setActivo(String activo) {
+        this.activo = activo;
+    }
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+
+    
     
 
 }

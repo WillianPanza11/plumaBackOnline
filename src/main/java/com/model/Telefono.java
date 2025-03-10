@@ -28,8 +28,7 @@ public class Telefono {
     private String tipo;
 	
 	@NotNull
-	@Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT FALSE")
-    private boolean isPrimary;
+    private String isPrimary;
 	
 	//@JoinColumn(name = "usuario_id")
 	//@ManyToOne (fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
@@ -41,7 +40,7 @@ public class Telefono {
 	public Telefono() {
 	}
 
-	public Telefono(Long idTelefono, String celular, String tipo, boolean isPrimary, Usuario usuario) {
+	public Telefono(Long idTelefono, String celular, String tipo, String isPrimary, Usuario usuario) {
 		this.idTelefono = idTelefono;
 		this.celular = celular;
 		this.tipo = tipo;
@@ -73,14 +72,6 @@ public class Telefono {
 		this.tipo = tipo;
 	}
 
-	public boolean isPrimary() {
-		return isPrimary;
-	}
-
-	public void setPrimary(boolean isPrimary) {
-		this.isPrimary = isPrimary;
-	}
-
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -89,5 +80,11 @@ public class Telefono {
 		this.usuario = usuario;
 	}
 
-	
+	public String getIsPrimary() {
+		return isPrimary;
+	}
+
+	public void setIsPrimary(String isPrimary) {
+		this.isPrimary = isPrimary;
+	}
 }

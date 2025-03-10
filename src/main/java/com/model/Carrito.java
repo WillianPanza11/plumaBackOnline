@@ -56,6 +56,12 @@ public class Carrito {
         this.usuario = usuario;
     }
 
+    
+
+    public Carrito(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
     public Long getIdCarrito() {
         return idCarrito;
     }

@@ -67,6 +67,21 @@ public class Pedido {
         this.factura = factura;
     }
 
+    
+
+    public Pedido(Long idPedido, BigDecimal total, BigDecimal subtotal, LocalDateTime createdAt, Usuario usuario,
+            List<ItemPedido> items, Factura factura, Entrega entrega, MetodoPago metodoPago) {
+        this.idPedido = idPedido;
+        this.total = total;
+        this.subtotal = subtotal;
+        this.createdAt = createdAt;
+        this.usuario = usuario;
+        this.items = items;
+        this.factura = factura;
+        this.entrega = entrega;
+        this.metodoPago = metodoPago;
+    }
+
     public Long getIdPedido() {
         return idPedido;
     }
@@ -121,6 +136,22 @@ public class Pedido {
 
     public void setFactura(Factura factura) {
         this.factura = factura;
+    }
+
+    public Entrega getEntrega() {
+        return entrega;
+    }
+
+    public void setEntrega(Entrega entrega) {
+        this.entrega = entrega;
+    }
+
+    public MetodoPago getMetodoPago() {
+        return metodoPago;
+    }
+
+    public void setMetodoPago(MetodoPago metodoPago) {
+        this.metodoPago = metodoPago;
     }
 
     

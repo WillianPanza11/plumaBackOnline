@@ -1,7 +1,10 @@
 package com.security.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.model.Carrito;
@@ -25,13 +28,16 @@ public class Usuario {
     private Long idUsuario;
 
     @NotNull
+    @NotBlank(message = "El nombre no puede estar vacío")
+    @Pattern(regexp = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$", message = "El nombre solo puede contener letras")
     private String nombre;
 
     @NotNull
     @Column(unique = true)
     private String nombreUsuario;
 
-    @NotNull
+    @NotNull(message = "El email no puede estar vacío")
+    @Email(message = "Debe ingresar un email válido")
     private String email;
 
     @NotNull

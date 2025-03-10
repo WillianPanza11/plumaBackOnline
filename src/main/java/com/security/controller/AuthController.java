@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import com.model.Carrito;
 import com.model.Direccion;
 import com.model.Telefono;
 import com.security.dto.JwtDto;
@@ -22,6 +23,7 @@ import com.security.dto.LoginUsuario;
 import com.security.dto.NuevoUsuario;
 import com.security.entity.Rol;
 import com.security.entity.Usuario;
+import com.security.enums.EstadoCarrito;
 import com.security.enums.RolNombre;
 import com.security.jwt.JwtProvider;
 import com.security.service.RolService;
@@ -90,7 +92,7 @@ public class AuthController {
                         Telefono telefono = new Telefono();
                         telefono.setCelular(telefonoDto.getCelular());
                         telefono.setTipo(telefonoDto.getTipo());
-                        telefono.setPrimary(telefonoDto.isPrimary());
+                        telefono.setIsPrimary(telefonoDto.getIsPrimary());
     
                         // 🔹 Establecer la relación correctamente antes de guardar
                         telefono.setUsuario(usuario);
@@ -124,10 +126,23 @@ public class AuthController {
 
             }
 
+            // 🔹 Crear carrito
+            try {
+                Carrito carrito = new Carrito();
+                carrito.setEstado(EstadoCarrito.ACTIVO.name());
+
+                // 🔹 Establecer la relación correctamente antes de guardar
+                carrito.setUsuario(usuario);
+                usuario.setCarrito(carrito);
+
+            } catch (Exception e) {
+                System.out.println("Error al guardar carrito: " + e.getMessage() + " - Causa: " + e.getCause());
+            }
+
             usuario.setRoles(roles);
             usuarioService.save(usuario);
             response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
-            response.setObject("USUARIO TELFONO Y DIRECCION GUARDADOS");// no cambiar este mensaje
+            response.setObject("USUARIO Y CARRITO CREADO, TELFONO Y DIRECCION OPCIONAL");// no cambiar este mensaje
             response.setStatus(ParametersApp.SUCCESSFUL.value());
             return response;
         }

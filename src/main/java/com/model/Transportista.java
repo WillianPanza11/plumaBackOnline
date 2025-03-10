@@ -36,4 +36,7 @@ public class Transportista {
 
     @OneToMany(mappedBy = "transportista", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Entrega> entregas;
+
+    @OneToMany(mappedBy = "transportista", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TransportistaTelefono> telefonos;
 }
