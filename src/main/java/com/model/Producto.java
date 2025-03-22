@@ -27,7 +27,7 @@ public class Producto {
 	@Column(name = "id_producto", nullable = false)
 	private Long idProducto;
     
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String nombreProducto; 
 
     @Column(nullable = false)
@@ -44,7 +44,7 @@ public class Producto {
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
-    @Column(name = "updated_at", nullable = false)
+    @Column(name = "updated_at", nullable = true)
     private LocalDateTime updatedAt;
 
     //Estado "activo", "inactivo", "agotado"
@@ -89,6 +89,21 @@ public class Producto {
         this.categoria = categoria;
         this.itemsPedido = itemsPedido;
         this.resenas = resenas;
+    }
+    
+    public Producto(Long idProducto, String nombreProducto, String descriptionProducto, BigDecimal precioProducto,
+            int stock, LocalDateTime createdAt, LocalDateTime updatedAt, String estado, String imageUrl,
+            Categoria categoria) {
+        this.idProducto = idProducto;
+        this.nombreProducto = nombreProducto;
+        this.descriptionProducto = descriptionProducto;
+        this.precioProducto = precioProducto;
+        this.stock = stock;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.estado = estado;
+        this.imageUrl = imageUrl;
+        this.categoria = categoria;
     }
 
     public Long getIdProducto() {

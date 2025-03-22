@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dto.CategoriaDto;
-import com.model.Categoria;
 import com.services.CategoriaService;
 import com.util.GenericResponse;
 

@@ -3,6 +3,8 @@ package com.dto;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import com.model.Producto;
+
 public class ProductoDto {
     private long idProducto;
     private String nombreProducto;
@@ -13,12 +15,28 @@ public class ProductoDto {
     private LocalDateTime updatedAt;
     private String estado;
     private String imageUrl;
+    private Long idCategoria;
 
     public ProductoDto() {
     }
 
+    public ProductoDto(Producto producto) {
+        this.idProducto = producto.getIdProducto();
+        this.nombreProducto = producto.getNombreProducto(); 
+        this.descriptionProducto = producto.getDescriptionProducto();
+        this.precioProducto = producto.getPrecioProducto();
+        this.stock = producto.getStock();
+        this.createdAt = producto.getCreatedAt();
+        this.updatedAt = producto.getUpdatedAt();
+        this.estado = producto.getEstado();
+        this.imageUrl = producto.getImageUrl();
+        this.idCategoria = producto.getCategoria().getIdCategoria();
+
+    }
+
     public ProductoDto(long idProducto, String nombreProducto, String descriptionProducto, BigDecimal precioProducto,
-            int stock, LocalDateTime createdAt, LocalDateTime updatedAt, String estado, String imageUrl) {
+            int stock, LocalDateTime createdAt, LocalDateTime updatedAt, String estado, String imageUrl,
+            Long idCategoria) {
         this.idProducto = idProducto;
         this.nombreProducto = nombreProducto;
         this.descriptionProducto = descriptionProducto;
@@ -28,6 +46,7 @@ public class ProductoDto {
         this.updatedAt = updatedAt;
         this.estado = estado;
         this.imageUrl = imageUrl;
+        this.idCategoria = idCategoria;
     }
 
     public long getIdProducto() {
@@ -101,6 +120,16 @@ public class ProductoDto {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
+    public Long getIdCategoria() {
+        return idCategoria;
+    }
+
+    public void setIdCategoria(Long idCategoria) {
+        this.idCategoria = idCategoria;
+    }
+
+    
 
     
 
